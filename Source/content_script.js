@@ -7,10 +7,7 @@ function walk(node)
 	
 	var child, next;
 	
-	if (node.tagName.toLowerCase() == 'input' || node.tagName.toLowerCase() == 'textarea'
-	    || node.classList.indexOf('ace_editor') > -1) {
-		return;
-	}
+if (node.nodeName.toLowerCase() == 'input' || node.nodeName.toLowerCase() == 'textarea' || (node.classList && node.classList.contains('ace_editor'))) { return; }
 
 	switch ( node.nodeType )  
 	{
@@ -36,8 +33,10 @@ function handleText(textNode)
 {
 	var v = textNode.nodeValue;
 
-	v = v.replace(/\bMillenials\b/g, "Kids These Days");
-	v = v.replace(/\bmillenials\b/g, "kids these days");
+	v = v.replace(/\bMillennials\b/g, "Kids These Days");
+	v = v.replace(/\bmillennials\b/g, "kids these days");
+	v = v.replace(/\bMillennial\b/g, "Kid");
+	v = v.replace(/\bmillennial\b/g, "kid");
 	
 	textNode.nodeValue = v;
 }
